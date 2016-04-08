@@ -1,14 +1,14 @@
 'use strict';
 
-describe('myContacts.view1 module', function() {
+describe('myContacts.contacts module', function() {
 
-  beforeEach(module('myContacts.view1'));
+  beforeEach(module('myContacts.contacts'));
 
-  describe('view1 controller', function(){
+  describe('contacts controller', function(){
 
     it('should ....', inject(function($controller) {
       //spec body
-      var view1Ctrl = $controller('View1Ctrl');
+      var view1Ctrl = $controller('ContactsCtrl');
       expect(view1Ctrl).toBeDefined();
     }));
 
