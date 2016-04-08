@@ -1,1 +1,60 @@
-<p>This is the partial for view 1.</p>
+<div ng-controller="ContactsCtrl" class="row">
+  <div class="row" ng-hide="addFormShow">
+    <div class="large-10 columns">
+      <table>
+        <thead>
+          <tr>
+            <th width="200px;">Home</th>
+            <th width="200px">Company</th>
+            <th width="25%">Email</th>
+            <th width="25%">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contact in contacts">
+            <td><a href="#">{{contact.name}}</a></td>
+            <td>{{contact.company}}</td>
+            <td>{{contact.email}}</td>
+            <td>
+              <a class="button tiny" ng-click="showEditForm(contact)">Edit</a>
+              <a class="button tiny alert" ng-click="removeContact(contact)">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table> 
+    </div>
+
+    <div class="small-12 large-2 columns" style="float: right;">
+      <a class="button large righ" ng-click="showAddForm()">+</a>
+    </div>    
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns" ng-show="addFormShow">
+      <form ng-submit="addFormSubmit()">
+        <h3>Add Contact</h3>
+        <div class="row">
+          <div class="large-6 columns">
+            <label>Name:</label>
+            <input type="text" ng-model="name" placeholder="Contact name" required>
+          </div>
+          <div class="large-6 columns">
+            <label>Email:</label>
+            <input type="email" ng-model="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 columns">
+            <label>Company:</label>
+            <input type="text" ng-model="company" placeholder="Company">
+          </div>
+          <div class="large-6 columns">
+            <label>Phone:</label>
+            <input type="text" ng-model="phone" placeholder="Phone">
+          </div>
+        </div>
+        <input type="submit" class="button small right" value="Add Contact">
+      </form>    
+    </div>    
+  </div>
+</div>
