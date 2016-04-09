@@ -1,20 +1,23 @@
-<div ng-controller="ContactsCtrl" class="row">
-  <div class="row" ng-hide="addFormShow">
+<div ng-controller="ContactsCtrl" class="container">
+  <div class="row" ng-hide="addFormShow || contactFormShow || editFormShow">
     <div class="large-10 columns">
+      <div class="alert-box" ng-show="msg" data-alert>{{msg}}</div>
       <table>
         <thead>
           <tr>
-            <th width="200px;">Home</th>
+            <th width="200px;">Name</th>
             <th width="200px">Company</th>
-            <th width="25%">Email</th>
-            <th width="25%">Action</th>
+            <th width="20%">Email</th>
+            <th width="20%">Phone</th>
+            <th width="20%">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="contact in contacts">
-            <td><a href="#">{{contact.name}}</a></td>
+            <td><a ng-click="showContact(contact)">{{contact.name}}</a></td>
             <td>{{contact.company}}</td>
             <td>{{contact.email}}</td>
+            <td>{{contact.phone}}</td>
             <td>
               <a class="button tiny" ng-click="showEditForm(contact)">Edit</a>
               <a class="button tiny alert" ng-click="removeContact(contact)">Delete</a>
@@ -29,8 +32,8 @@
     </div>    
   </div>
 
-  <div class="row">
-    <div class="large-12 columns" ng-show="addFormShow">
+  <div class="row" ng-show="addFormShow">
+    <div class="large-12 columns">
       <form ng-submit="addFormSubmit()">
         <h3>Add Contact</h3>
         <div class="row">
@@ -54,6 +57,49 @@
           </div>
         </div>
         <input type="submit" class="button small right" value="Add Contact">
+      </form>    
+    </div>    
+  </div>
+
+  <div class="row" ng-show="contactFormShow">
+    <div class="columns large-12">
+      <div class="panel" ng="currentContact">
+        <ul>
+          <li><strong>Name:</strong> {{currentContact.name}}</li>
+          <li><strong>Email:</strong> {{currentContact.email}}</li>
+          <li><strong>Company:</strong> {{currentContact.company}}</li>
+          <li><strong>Phone:</strong> {{currentContact.phone}}</li>
+        </ul>
+      </div>
+      <button class="button small" ng-click="hideContactForm()">Hide</button>      
+    </div>
+  </div>
+
+  <div class="row" ng-show="editFormShow">
+    <div class="large-12 columns">
+      <form ng-submit="editFormSubmit()">
+        <h3>Edit Contact</h3>
+        <div class="row">
+          <div class="large-6 columns">
+            <label>Name:</label>
+            <input type="text" ng-model="name" placeholder="Contact name" required>
+          </div>
+          <div class="large-6 columns">
+            <label>Email:</label>
+            <input type="email" ng-model="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 columns">
+            <label>Company:</label>
+            <input type="text" ng-model="company" placeholder="Company">
+          </div>
+          <div class="large-6 columns">
+            <label>Phone:</label>
+            <input type="text" ng-model="phone" placeholder="Phone">
+          </div>
+        </div>
+        <input type="submit" class="button small right" value="Save Contact">
       </form>    
     </div>    
   </div>
