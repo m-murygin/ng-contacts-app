@@ -74,6 +74,16 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
       });
   };
 
+  $scope.removeContact = function (contact) {
+    if (confirm('Are you sure that you want to remove ' + contact.name)) {
+      $scope.contacts
+        .$remove(contact)
+        .then(function () {
+          $scope.msg = 'Contact was removed';
+        });
+    }
+  };
+
   function clearFormFields() {
     $scope.name = null;
     $scope.email = null;
