@@ -1,8 +1,18 @@
-# ng-contacts-app
+# Contact List application build with angularjs
 
-### AngularJS Contacts application
+### Life demo
+https://m-murygin.github.io/ng-contacts-app/app/
 
-To run
+### Before run
+```sh
+npm install
+```
+
+### To run
 ```sh
 npm start
 ```
+
+### Technologies  
+1. AngularJS  
+2. Firebase  
